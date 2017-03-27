@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>libMmkJsonWriter</id>
-		<version>0.0.0</version>
+		<version>0.0.1</version>
 		<authors>MaulingMonkey</authors>
 		<owners>MaulingMonkey</owners>
 		<licenseUrl>https://github.com/MaulingMonkey/libMmkJsonWriter/blob/master/LICENSE.txt</licenseUrl>
