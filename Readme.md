@@ -67,8 +67,8 @@ int main()
 ## From Source (Linux)
 - Clone the repository
 - Invoke make
-- Add `[-IlibMmkJsonWriter/include/](libMmkJsonWriter/include/)` to your `CCFLAGS`.
-- Add `[-LlibMmkJsonWriter/build/native/libs/](libMmkJsonWriter/build/native/libs/)` to your `LDFLAGS`.
+- Add [`-IlibMmkJsonWriter/include/`](libMmkJsonWriter/include/) to your `CCFLAGS`.
+- Add [`-LlibMmkJsonWriter/build/native/libs/`](libMmkJsonWriter/build/native/libs/) to your `LDFLAGS`.
 - Add `-lMmkJsonWriter` to your `LDFLAGS`.
 
 # Compatability
