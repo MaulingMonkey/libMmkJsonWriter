@@ -52,6 +52,11 @@ int main()
 }
 ```
 
+Output:
+```json
+{"i":42,"n":42.000000,"s":"\u0001\u001f ~\u007f\u0080string","p":null,"a":[42,42.000000,"string",null],"o":{"i":42,"n":42.000000,"s":"string","p":null}}
+```
+
 # Installation
 
 ## Via NuGet
