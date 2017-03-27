@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="@(libMmkJsonWriterLibSrc)" />
+    <ClCompile Include="@(libMmkJsonWriterLibSrc)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="%28Build configuration%29">
+      <UniqueIdentifier>{8a72b1f5-3532-4bfb-93d3-ac62780138b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tests.props">
+      <Filter>%28Build configuration%29</Filter>
+    </None>
+  </ItemGroup>
+</Project>

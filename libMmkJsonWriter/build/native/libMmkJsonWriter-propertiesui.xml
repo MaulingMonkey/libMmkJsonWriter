@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectSchemaDefinitions xmlns="clr-namespace:Microsoft.Build.Framework.XamlTypes;assembly=Microsoft.Build.Framework">
+  <Rule Name="ReferencedPackages_libMmkJsonWriter" PageTemplate="tool" DisplayName="Referenced Packages" SwitchPrefix="/" Order="1">
+    <Rule.Categories>
+      <Category Name="libMmkJsonWriter" DisplayName="libMmkJsonWriter" />
+    </Rule.Categories>
+    <Rule.DataSource>
+      <DataSource Persistence="ProjectFile" ItemType="" HasConfigurationCondition="true" />
+    </Rule.DataSource>
+    <EnumProperty Name="libMmkJsonWriterLibConfiguration" DisplayName="Library Configuration" Description="Which libMmkJsonWriter library configuration variant to link against (if linking)" Category="libMmkJsonWriter">
+      <EnumValue Name="Debug"   DisplayName="Debug (unoptimized)" />
+      <EnumValue Name="Release" DisplayName="Release (optimized)" />
+    </EnumProperty>
+    <EnumProperty Name="libMmkJsonWriterLibPlatform" DisplayName="Library Platform" Description="Which libMmkJsonWriter library platform/architecture to link against (if linking)" Category="libMmkJsonWriter">
+      <EnumValue Name="x86"  DisplayName="x86"            Description="Link against x86 libs." />
+      <EnumValue Name="x64"  DisplayName="x64"            Description="Link against x64 libs." />
+      <EnumValue Name="src"  DisplayName="Compile Source" Description="Reference source code in project instead of linking directly." />
+      <EnumValue Name="none" DisplayName="Don't Link"     Description="Don't link platform at all." />
+    </EnumProperty>
+  </Rule>
+</ProjectSchemaDefinitions>

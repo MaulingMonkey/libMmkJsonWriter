@@ -1,0 +1,10 @@
+Thumbs.db
+
+*.sdf
+*.opendb
+*.user
+
+libMmkJsonWriter/build/native/lib/
+.vs/
+bin/
+obj/

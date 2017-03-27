@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include/mmk/json">
+      <UniqueIdentifier>{5ac69377-2479-4100-b982-0f027a7533ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{03b2f93a-fac9-4998-9168-b727d5f79219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="%28Build Configuration%29">
+      <UniqueIdentifier>{d0c8d279-8ca4-41de-b023-15983791fc88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build/native">
+      <UniqueIdentifier>{80ce6ac0-b800-4d92-af67-5ea844293075}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\mmk\json\writer.hpp">
+      <Filter>include/mmk/json</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\writer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libMmkJsonWriter.props">
+      <Filter>%28Build Configuration%29</Filter>
+    </None>
+    <None Include="build\native\libMmkJsonWriter.targets">
+      <Filter>build/native</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="build\native\libMmkJsonWriter-propertiesui.xml">
+      <Filter>build/native</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

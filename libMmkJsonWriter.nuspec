@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+	<metadata>
+		<id>libMmkJsonWriter</id>
+		<version>0.0.0</version>
+		<authors>MaulingMonkey</authors>
+		<owners>MaulingMonkey</owners>
+		<licenseUrl>https://github.com/MaulingMonkey/libMmkJsonWriter/blob/master/LICENSE.txt</licenseUrl>
+		<projectUrl>https://github.com/MaulingMonkey/libMmkJsonWriter</projectUrl>
+		<!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>MaulingMonKey's Json Writer API.  No, the world didn't really need another JSON writer library.  Yes, I wrote one anyways.
+
+Project Goals:
+- Zero Allocations - I should be able to use this to report heap corruptions.  Payload limits are a feature (tm).
+- Cross Platform - any C++03 compiler should work (tm).
+- Less Bugs - via the abuse of macros &amp; variable shadowing, to avoid common errors.
+- No Config - aiming to have "perfect" NuGet integration, with .libs, sane defaults, and source compilation fallback.</description>
+		<releaseNotes>Initial test of nuget packaging process for C++ stuff.</releaseNotes>
+		<copyright>Copyright © MaulingMonkey 2017</copyright>
+		<tags>c++03 native json</tags>
+	</metadata>
+	<files>
+		<file src="libMmkJsonWriter\build\**\*.*"   target="build"/>
+		<file src="libMmkJsonWriter\include\**\*.*" target="include"/>
+		<file src="libMmkJsonWriter\src\**\*.*"     target="src"/>
+	</files>
+</package>

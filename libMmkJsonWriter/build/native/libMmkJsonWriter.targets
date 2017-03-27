@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- By naming this exactly build/native/{ProjectName}.targets, this will be auto-referenced by projects consuming this nuget package. -->
+
+  <PropertyGroup>
+    <libMmkJsonWriterLibPlatform Condition="('$(libMmkJsonWriterLibPlatform)'=='') And ('$(PlatformToolset)'!='v140')">src</libMmkJsonWriterLibPlatform><!-- We only provide v140 libs, fallback on src for other toolsets -->
+    <libMmkJsonWriterLibPlatform Condition="('$(libMmkJsonWriterLibPlatform)'=='') And ('$(Platform)'=='Win32'      )">x86</libMmkJsonWriterLibPlatform>
+    <libMmkJsonWriterLibPlatform Condition="('$(libMmkJsonWriterLibPlatform)'=='') And ('$(Platform)'=='x64'        )">x64</libMmkJsonWriterLibPlatform>
+    <libMmkJsonWriterLibPlatform Condition="('$(libMmkJsonWriterLibPlatform)'=='')                                   ">src</libMmkJsonWriterLibPlatform><!-- We only provide x86/x64 libs, fallback on src for other platforms -->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <libMmkJsonWriterLibConfiguration Condition="('$(libMmkJsonWriterLibConfiguration)'=='') And ('$(Configuration)'=='Debug'  )">Debug</libMmkJsonWriterLibConfiguration>
+    <libMmkJsonWriterLibConfiguration Condition="('$(libMmkJsonWriterLibConfiguration)'=='') And ('$(Configuration)'=='Release')">Release</libMmkJsonWriterLibConfiguration>
+    <libMmkJsonWriterLibConfiguration Condition="('$(libMmkJsonWriterLibConfiguration)'=='')                                    ">Release</libMmkJsonWriterLibConfiguration><!-- We only provide Debug/Release libs, fallback on src for other platforms -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)\libMmkJsonWriter-propertiesui.xml" />
+  </ItemGroup>
+
+  <!-- Add source via libMmkJsonWriterLibSrc tags to hide from Solution Explorer -->
+  <ItemGroup>
+    <libMmkJsonWriterLibSrc Include="$(MSBuildThisFileDirectory)..\..\src\writer.cpp" />
+  </ItemGroup>
+  <!-- ...then add them to ClCompile, but excluded unless we're doing a ref-src build. -->
+  <ItemGroup>
+    <ClCompile Include="@(libMmkJsonWriterLibSrc)">
+      <ExcludedFromBuild Condition="'$(libMmkJsonWriterLibPlatform)'!='src'">true</ExcludedFromBuild>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+
+  <!-- Build settings -->
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAS_MMK_JSON_WRITER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="('$(libMmkJsonWriterLibPlatform)'!='src') And ('$(libMmkJsonWriterLibPlatform)'!='none')">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)lib\$(libMmkJsonWriterLibPlatform)\$(PlatformToolset)\$(libMmkJsonWriterLibConfiguration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libMmkJsonWriter.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>
