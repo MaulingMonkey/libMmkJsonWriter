@@ -60,7 +60,7 @@ Output:
 # Installation
 
 ## Via NuGet
-<strike>Add [libMmkJsonWriter](https://www.nuget.org/packages/libMmkJsonWriter/) to your project via nuget.  Done!</strike> **Soon(tm)**
+Add [libMmkJsonWriter](https://www.nuget.org/packages/libMmkJsonWriter/) to your project via nuget.  Done!
 
 ## From Source (Windows)
 - Clone the repository
