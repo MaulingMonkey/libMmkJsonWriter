@@ -39,11 +39,8 @@ namespace mmk { namespace json
 
 	void writer::syntax(char ch)
 	{
-		if (!locked) { error("writer::syntax(...) invoked without being locked by a scope!"); return; }
-		if (!position) return;
-
-		if (position == end) position = NULL;
-		else                *position++ = ch;
+		char buf[2] = { ch, '\0' };
+		syntax(buf);
 	}
 
 	void writer::operator()(         const char* value)
@@ -86,16 +83,16 @@ namespace mmk { namespace json
 		syntax('\"');
 	}
 
-	void writer::operator()(         bool        value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } syntax(value ? "true" : "false"); }
-	void writer::operator()(unsigned int         value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%u",   value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(  signed int         value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%i",   value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(unsigned long        value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%lu",  value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(  signed long        value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%li",  value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(unsigned long long   value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%llu", value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(  signed long long   value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%lli", value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(         float       value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%f",   value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(         double      value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%f",   value); position = (w >= n) ? 0 : (position + w); }
-	void writer::operator()(         long double value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } const size_t n = end-position; const size_t w = snprintf(position, n, "%Lf",  value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(         bool        value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; syntax(value ? "true" : "false"); }
+	void writer::operator()(unsigned int         value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%u",   value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(  signed int         value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%i",   value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(unsigned long        value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%lu",  value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(  signed long        value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%li",  value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(unsigned long long   value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%llu", value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(  signed long long   value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%lli", value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(         float       value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%f",   value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(         double      value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%f",   value); position = (w >= n) ? 0 : (position + w); }
+	void writer::operator()(         long double value) { if (!locked) { error("writer::operator()(...) invoked without being locked by a scope!"); return; } if (!position) return; const size_t n = end-position; const size_t w = snprintf(position, n, "%Lf",  value); position = (w >= n) ? 0 : (position + w); }
 
 
 

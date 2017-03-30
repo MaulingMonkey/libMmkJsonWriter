@@ -76,32 +76,32 @@ namespace mmk { namespace json
 		explicit writer(char* buffer, size_t bufferSize)
 			: begin   (buffer+0)
 			, end     (buffer+bufferSize)
-			, position(buffer+0)
+			, position(bufferSize ? buffer+0 : 0)
 			, locked  (false)
 		{
+			if (position) position[0] = '\0';
 		}
 
 		template < size_t bufferSize > explicit writer(char (&buffer)[bufferSize])
 			: begin   (buffer+0)
 			, end     (buffer+bufferSize)
-			, position(buffer+0)
+			, position(bufferSize ? buffer+0 : 0)
 			, locked  (false)
 		{
+			if (position) position[0] = '\0';
 		}
 
 		explicit writer(std::vector<char>& buffer)
 			: begin   (buffer.data())
 			, end     (buffer.data()+buffer.size())
-			, position(buffer.data())
+			, position(buffer.size() ? buffer.data() : 0)
 			, locked  (false)
 		{
+			if (position) position[0] = '\0';
 		}
 
-		const char* c_str() const { return position ? begin : 0; }
-		size_t      size()  const { return position ? (position-begin) : 0; }
-
-		objectWriter object();
-		arrayWriter  array();
+		const char* c_str() const { return locked ? 0 : position ? begin : 0; }
+		size_t      size()  const { return locked ? 0 : position ? (position-begin) : 0; }
 	};
 
 	class objectWriter
