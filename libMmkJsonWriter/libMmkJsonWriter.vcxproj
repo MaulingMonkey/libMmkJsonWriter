@@ -35,6 +35,9 @@
       <SubType>Designer</SubType>
     </Xml>
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="tools\libMmkJsonWriter.natvis" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D0339B64-F777-481F-A086-29DAEABA0192}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

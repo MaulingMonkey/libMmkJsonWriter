@@ -13,6 +13,9 @@
     <Filter Include="build/native">
       <UniqueIdentifier>{80ce6ac0-b800-4d92-af67-5ea844293075}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{5357d918-7a75-4e28-bcb7-c214b549a7c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\mmk\json\writer.hpp">
@@ -36,5 +39,10 @@
     <Xml Include="build\native\libMmkJsonWriter-propertiesui.xml">
       <Filter>build/native</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="tools\libMmkJsonWriter.natvis">
+      <Filter>tools</Filter>
+    </Natvis>
   </ItemGroup>
 </Project>

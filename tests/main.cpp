@@ -18,6 +18,13 @@
 
 int main()
 {
+	MMK_JSON_WRITER_ROOT_OBJECT( overflow, 16 )
+	{
+		overflow("i", 42);
+		overflow("n", 42.0);
+		overflow("s", "\x01\x1f\x20\x7e\x7f\x80string");
+	}
+
 	MMK_JSON_WRITER_ROOT_OBJECT( example, 1024 )
 	{
 		const char* const null = 0; // C++03 hack for demo

@@ -24,5 +24,6 @@ Project Goals:
 		<file src="libMmkJsonWriter\build\**\*.*"   target="build"/>
 		<file src="libMmkJsonWriter\include\**\*.*" target="include"/>
 		<file src="libMmkJsonWriter\src\**\*.*"     target="src"/>
+		<file src="libMmkJsonWriter\tools\**\*.*"   target="tools"/>
 	</files>
 </package>

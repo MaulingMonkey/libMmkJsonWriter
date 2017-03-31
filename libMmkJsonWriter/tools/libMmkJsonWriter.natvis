@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<!-- Custom Views:      https://msdn.microsoft.com/en-us/library/jj620914.aspx -->
+	<!-- Format Specifiers: https://msdn.microsoft.com/en-us/library/75w45ekt.aspx -->
+	<Type Name="mmk::json::writer">
+		<DisplayString Condition="position == 0">(cannot emit JSON: buffer filled)</DisplayString>
+		<DisplayString>{begin,sb}</DisplayString>
+		<StringView>begin</StringView>
+	</Type>
+	<Type Name="mmk::json::objectWriter">
+		<DisplayString Condition="w.position == 0">(cannot emit JSON: buffer filled)</DisplayString>
+		<DisplayString>{w.begin,sb}</DisplayString>
+		<StringView>w.begin</StringView>
+	</Type>
+	<Type Name="mmk::json::arrayWriter">
+		<DisplayString Condition="w.position == 0">(cannot emit JSON: buffer filled)</DisplayString>
+		<DisplayString>{w.begin,sb}</DisplayString>
+		<StringView>w.begin</StringView>
+	</Type>
+</AutoVisualizer>

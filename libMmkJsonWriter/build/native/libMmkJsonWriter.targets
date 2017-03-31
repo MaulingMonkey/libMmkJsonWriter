@@ -22,6 +22,7 @@
   <!-- Add source via libMmkJsonWriterLibSrc tags to hide from Solution Explorer -->
   <ItemGroup>
     <libMmkJsonWriterLibSrc Include="$(MSBuildThisFileDirectory)..\..\src\writer.cpp" />
+    <libMmkJsonWriterLibVis Include="$(MSBuildThisFileDirectory)..\..\tools\libMmkJsonWriter.natvis" />
   </ItemGroup>
   <!-- ...then add them to ClCompile, but excluded unless we're doing a ref-src build. -->
   <ItemGroup>
@@ -29,6 +30,9 @@
       <ExcludedFromBuild Condition="'$(libMmkJsonWriterLibPlatform)'!='src'">true</ExcludedFromBuild>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="@(libMmkJsonWriterLibVis)" />
   </ItemGroup>
 
   <!-- Build settings -->
