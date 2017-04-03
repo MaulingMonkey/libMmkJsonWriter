@@ -28,6 +28,7 @@
   <ItemGroup>
     <ClCompile Include="@(libMmkJsonWriterLibSrc)">
       <ExcludedFromBuild Condition="'$(libMmkJsonWriterLibPlatform)'!='src'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)libMmkJsonWriter_%(filename).o</ObjectFileName>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
