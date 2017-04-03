@@ -8,3 +8,4 @@ libMmkJsonWriter/build/native/lib/
 .vs/
 bin/
 obj/
+packages/

@@ -16,7 +16,7 @@ Project Goals:
 - Cross Platform - any C++03 compiler should work (tm).
 - Less Bugs - via the abuse of macros &amp; variable shadowing, to avoid common errors.
 - No Config - aiming to have "perfect" NuGet integration, with .libs, sane defaults, and source compilation fallback.</description>
-		<releaseNotes>Initial test of nuget packaging process for C++ stuff.</releaseNotes>
+		<releaseNotes>Fix JSON escape codes for [\b\f\n\r\t].</releaseNotes>
 		<copyright>Copyright © MaulingMonkey 2017</copyright>
 		<tags>c++03 native json</tags>
 	</metadata>

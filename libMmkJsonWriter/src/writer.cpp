@@ -60,11 +60,11 @@ namespace mmk { namespace json
 			case '\"': syntax("\\\""); break;
 			case '\\': syntax("\\\\"); break;
 			//case '/':  syntax("\\\/"); break;
-			case '\b': syntax("\\\b"); break;
-			case '\f': syntax("\\\f"); break;
-			case '\n': syntax("\\\n"); break;
-			case '\r': syntax("\\\r"); break;
-			case '\t': syntax("\\\t"); break;
+			case '\b': syntax("\\b"); break;
+			case '\f': syntax("\\f"); break;
+			case '\n': syntax("\\n"); break;
+			case '\r': syntax("\\r"); break;
+			case '\t': syntax("\\t"); break;
 			default:
 				if (0x20 <= next && next < 0x7F)
 				{
