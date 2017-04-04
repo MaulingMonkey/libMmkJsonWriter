@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>libMmkJsonWriter</id>
-		<version>0.0.1</version>
+		<version>0.0.2</version>
 		<authors>MaulingMonkey</authors>
 		<owners>MaulingMonkey</owners>
 		<licenseUrl>https://github.com/MaulingMonkey/libMmkJsonWriter/blob/master/LICENSE.txt</licenseUrl>
@@ -16,7 +16,7 @@ Project Goals:
 - Cross Platform - any C++03 compiler should work (tm).
 - Less Bugs - via the abuse of macros &amp; variable shadowing, to avoid common errors.
 - No Config - aiming to have "perfect" NuGet integration, with .libs, sane defaults, and source compilation fallback.</description>
-		<releaseNotes>Fix JSON escape codes for [\b\f\n\r\t].</releaseNotes>
+		<releaseNotes></releaseNotes>
 		<copyright>Copyright © MaulingMonkey 2017</copyright>
 		<tags>c++03 native json</tags>
 	</metadata>
