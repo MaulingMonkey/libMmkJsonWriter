@@ -15,7 +15,7 @@
 
 #include <mmk/json/writer.hpp>
 #include <mmk/test/unit.hpp>
-#include <iostream>
+#include <cstring>
 
 MMK_UNIT_TEST_CATEGORY("Demos")
 {
@@ -61,10 +61,10 @@ MMK_UNIT_TEST_CATEGORY("Edge Conditions")
 {
 	MMK_UNIT_TEST("Empty root overflows")
 	{
-		MMK_JSON_WRITER_ROOT_OBJECT(o1, 1) {}
-		MMK_JSON_WRITER_ROOT_ARRAY( a1, 1) {}
-		MMK_JSON_WRITER_ROOT_OBJECT(o2, 2) {}
-		MMK_JSON_WRITER_ROOT_ARRAY( a2, 2) {}
+		MMK_JSON_WRITER_ROOT_OBJECT(o1, 1) { (void)o1; }
+		MMK_JSON_WRITER_ROOT_ARRAY( a1, 1) { (void)a1; }
+		MMK_JSON_WRITER_ROOT_OBJECT(o2, 2) { (void)o2; }
+		MMK_JSON_WRITER_ROOT_ARRAY( a2, 2) { (void)a2; }
 
 		ASSERT_MSG(!o1, "Empty root object should overflow 1-byte buffer (no space for \"}\0\")");
 		ASSERT_MSG(!a1, "Empty root array should overflow 1-byte buffer (no space for \"]\0\")");
@@ -89,12 +89,12 @@ MMK_UNIT_TEST_CATEGORY("Edge Conditions")
 
 	MMK_UNIT_TEST("Empty root objects barely within buffers")
 	{
-		MMK_JSON_WRITER_ROOT_OBJECT(o, 3) {}
+		MMK_JSON_WRITER_ROOT_OBJECT(o, 3) { (void)o; }
 		ASSERT_MSG(!!o, "Empty root object should not overflow 3-byte buffer");
 		ASSERT_CMP(strcmp(o.c_str(), "{}"), ==, 0);
 		// TODO: Add ASSERT_CMP_STR or similar (and perhaps regex options?) to libMmkUnitTest
 
-		MMK_JSON_WRITER_ROOT_ARRAY(a, 3) {}
+		MMK_JSON_WRITER_ROOT_ARRAY(a, 3) { (void)a; }
 		ASSERT_MSG(!!a, "Empty root array should not overflow 3-byte buffer");
 		ASSERT_CMP(strcmp(a.c_str(), "[]"), ==, 0);
 	}

@@ -191,20 +191,20 @@ namespace mmk { namespace json
 // set of APIs is incorrect for your current scope.
 
 #ifdef _MSC_VER
-	#define ZMMK_JSON_SHADOW_SUPRESS()   __pragma(warning(push)) __pragma(warning(disable: 4456))
-	#define ZMMK_JSON_SHADOW_UNSUPRESS() __pragma(warning(pop))
+	#define ZMMK_JSON_WARN_SUPRESS()   __pragma(warning(push)) __pragma(warning(disable: 4456))
+	#define ZMMK_JSON_WARN_UNSUPRESS() __pragma(warning(pop))
 #elif defined __GNUC__
-	#define ZMMK_JSON_SHADOW_SUPRESS()   _Pragma("GCC diagnostic push") _Pragma("GCC diagnostic ignored \"-Wshadow\"")
-	#define ZMMK_JSON_SHADOW_UNSUPRESS() _Pragma("GCC diagnostic pop")
+	#define ZMMK_JSON_WARN_SUPRESS()   _Pragma("GCC diagnostic push") _Pragma("GCC diagnostic ignored \"-Wshadow\"")
+	#define ZMMK_JSON_WARN_UNSUPRESS() _Pragma("GCC diagnostic pop")
 #else // TODO: Your compiler's warning supression pragmas here.
-	#define ZMMK_JSON_SHADOW_SUPRESS()
-	#define ZMMK_JSON_SHADOW_UNSUPRESS()
+	#define ZMMK_JSON_WARN_SUPRESS()
+	#define ZMMK_JSON_WARN_UNSUPRESS()
 #endif
 
-#define MMK_JSON_WRITER_ARRAY_ARRAY(   name       ) ZMMK_JSON_SHADOW_SUPRESS() if (::mmk::json::arrayWriter  name ## _array_w  = ::mmk::json::arrayWriter (name, ::mmk::json::noKeyTag() )) if (::mmk::json::arrayWriter&  name = name ## _array_w ) ZMMK_JSON_SHADOW_UNSUPRESS() /* { ... } */
-#define MMK_JSON_WRITER_OBJECT_ARRAY(  name, key  ) ZMMK_JSON_SHADOW_SUPRESS() if (::mmk::json::arrayWriter  name ## _array_w  = ::mmk::json::arrayWriter (name, key                     )) if (::mmk::json::arrayWriter&  name = name ## _array_w ) ZMMK_JSON_SHADOW_UNSUPRESS() /* { ... } */
-#define MMK_JSON_WRITER_ARRAY_OBJECT(  name       ) ZMMK_JSON_SHADOW_SUPRESS() if (::mmk::json::objectWriter name ## _object_w = ::mmk::json::objectWriter(name, ::mmk::json::noKeyTag() )) if (::mmk::json::objectWriter& name = name ## _object_w) ZMMK_JSON_SHADOW_UNSUPRESS() /* { ... } */
-#define MMK_JSON_WRITER_OBJECT_OBJECT( name, key  ) ZMMK_JSON_SHADOW_SUPRESS() if (::mmk::json::objectWriter name ## _object_w = ::mmk::json::objectWriter(name, key                     )) if (::mmk::json::objectWriter& name = name ## _object_w) ZMMK_JSON_SHADOW_UNSUPRESS() /* { ... } */
+#define MMK_JSON_WRITER_ARRAY_ARRAY(   name       ) ZMMK_JSON_WARN_SUPRESS() if (::mmk::json::arrayWriter  name ## _array_w  = ::mmk::json::arrayWriter (name, ::mmk::json::noKeyTag() )) if (::mmk::json::arrayWriter&  name = name ## _array_w ) ZMMK_JSON_WARN_UNSUPRESS() /* { ... } */
+#define MMK_JSON_WRITER_OBJECT_ARRAY(  name, key  ) ZMMK_JSON_WARN_SUPRESS() if (::mmk::json::arrayWriter  name ## _array_w  = ::mmk::json::arrayWriter (name, key                     )) if (::mmk::json::arrayWriter&  name = name ## _array_w ) ZMMK_JSON_WARN_UNSUPRESS() /* { ... } */
+#define MMK_JSON_WRITER_ARRAY_OBJECT(  name       ) ZMMK_JSON_WARN_SUPRESS() if (::mmk::json::objectWriter name ## _object_w = ::mmk::json::objectWriter(name, ::mmk::json::noKeyTag() )) if (::mmk::json::objectWriter& name = name ## _object_w) ZMMK_JSON_WARN_UNSUPRESS() /* { ... } */
+#define MMK_JSON_WRITER_OBJECT_OBJECT( name, key  ) ZMMK_JSON_WARN_SUPRESS() if (::mmk::json::objectWriter name ## _object_w = ::mmk::json::objectWriter(name, key                     )) if (::mmk::json::objectWriter& name = name ## _object_w) ZMMK_JSON_WARN_UNSUPRESS() /* { ... } */
 #define MMK_JSON_WRITER_ROOT(          name, size ) char name ## _buf [size]; ::mmk::json::writer name( name ## _buf )
 #define MMK_JSON_WRITER_ROOT_OBJECT(   name, size ) MMK_JSON_WRITER_ROOT(name, size); MMK_JSON_WRITER_ARRAY_OBJECT(name) /* { ... } */
 #define MMK_JSON_WRITER_ROOT_ARRAY(    name, size ) MMK_JSON_WRITER_ROOT(name, size); MMK_JSON_WRITER_ARRAY_ARRAY(name)  /* { ... } */
