@@ -5,7 +5,7 @@ MaulingMonKey's Json Writer API.  No, the world didn't really need another JSON 
 Project Goals:
 - Zero Allocations - I should be able to use this to report heap corruptions.  Payload limits are a feature (tm).
 - Cross Platform - any C++03 compiler should work (tm).
-- Less Bugs - via the abuse of macros & variable shadowing, to avoid common errors.
+- Compile-time safety to prevent API misuse (writing object key/value pairs to an array, or writing to a non-current scope.)
 - No Config - aiming to have "perfect" NuGet integration, with .libs, sane defaults, and source compilation fallback.
 
 License: [Apache 2.0](LICENSE.txt)
